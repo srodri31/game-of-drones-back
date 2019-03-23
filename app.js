@@ -14,12 +14,12 @@ app.use(cookieParser());
 
 const models = require("./models");
 models.sequelize
-  .sync()
+  .sync({ force: false })
   .then(() => {
     console.log("Database working fine");
   })
   .catch(err => {
-    console.log(err, "Something went worn with database update");
+    console.log(err, "Something went wrong with database update");
   });
 
 app.use("/api/v1/players", players);

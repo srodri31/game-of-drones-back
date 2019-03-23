@@ -10,7 +10,9 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
   all(req, res) {
-    return Player.findAll()
+    return Player.findAll({
+      include: [{ model: Game, as: "games" }]
+    })
       .then(players => res.status(200).send(players))
       .catch(error => res.status(400).send(error));
   },
