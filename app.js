@@ -2,6 +2,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
+const morgan = require("morgan");
 
 var players = require("./routes/players");
 let games = require("./routes/games");
@@ -10,6 +11,7 @@ let rounds = require("./routes/rounds");
 var app = express();
 
 app.use(bodyParser.json());
+app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 

@@ -83,7 +83,6 @@ const setWinner = (req, res) => {
         rounds = rounds.map(round => {
           return round.toJSON();
         });
-        console.log("GAME: " + game.id);
         const winnerId = calcGameWinner(rounds);
         PlayerGame.update(
           { isWinner: true },
@@ -99,17 +98,21 @@ const setWinner = (req, res) => {
 };
 
 const getWinner = (req, res) => {
-  return PlayerGame.findAll({})
+  return PlayerGame.findOne({
+    where: { gameId: req.params.id, isWinner: true },
+    include: [{ model: Player }]
+  })
     .then(playerGame => {
       if (playerGame) {
-        res.status(200).send(playerGamer);
+        const { player } = playerGame.toJSON();
+        res.status(200).send(player);
       } else {
         res.status(404).send({
           message: `Winner for game with id ${req.params.id} could not bw found`
         });
       }
     })
-    .catch(error => res.status(400).send(error));
+    .catch(error => res.status(400).send({ error }));
 };
 
 module.exports = {
