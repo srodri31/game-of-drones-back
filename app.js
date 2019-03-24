@@ -5,6 +5,7 @@ var bodyParser = require("body-parser");
 
 var players = require("./routes/players");
 let games = require("./routes/games");
+let rounds = require("./routes/rounds");
 
 var app = express();
 
@@ -24,5 +25,6 @@ models.sequelize
 
 app.use("/api/v1/players", players);
 app.use("/api/v1/games", games);
+app.use("/api/v1/rounds", rounds);
 
 module.exports = app;

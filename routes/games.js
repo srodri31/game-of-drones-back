@@ -13,4 +13,8 @@ router.put("/:id", gameController.update);
 
 router.delete("/:id", gameController.destroy);
 
+router.get("/:id/winner", gameController.getWinner);
+
+router.post("/:id/winner", gameController.setWinner);
+
 module.exports = router;
