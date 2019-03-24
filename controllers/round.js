@@ -35,6 +35,21 @@ const findById = (req, res) => {
     .catch(error => res.status(400).send(error));
 };
 
+const findByGame = (req, res) => {
+  return Round.findAll({
+    where: { gameId: req.params.gameId },
+    include: [{ model: Player }]
+  })
+    .then(round => {
+      if (round.length > 0) {
+        res.status(200).send(round);
+      } else {
+        res.status(404).send({ message: "There are no rounds for this game" });
+      }
+    })
+    .catch(error => res.status(400).send(error));
+};
+
 const update = (req, res) => {
   return Round.update(req.body, { where: { id: req.params.id } })
     .then(round => res.status(200).send(round))
@@ -61,6 +76,7 @@ module.exports = {
   create,
   all,
   findById,
+  findByGame,
   update,
   destroy
 };

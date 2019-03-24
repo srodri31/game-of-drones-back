@@ -7,6 +7,8 @@ router.get("/", roundController.all);
 
 router.post("/games/:gameId", roundController.create);
 
+router.get("/games/:gameId", roundController.findByGame);
+
 router.get("/:id", roundController.findById);
 
 router.put("/:id", roundController.update);
