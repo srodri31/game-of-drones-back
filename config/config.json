@@ -17,7 +17,7 @@
     "username": "root",
     "password": null,
     "database": "game_of_drones_production",
-    "host": "127.0.0.1",
+    "host": "mysql://bb06e617fbac03:26bf17c6@us-cdbr-iron-east-03.cleardb.net/heroku_9725fc1f7e2c696?reconnect=true",
     "dialect": "mysql"
   }
 }
