@@ -17,7 +17,7 @@
     "username": "bb06e617fbac03",
     "password": "26bf17c6",
     "database": "game_of_drones_production",
-    "host": "http://us-cdbr-iron-east-03.cleardb.net/heroku_9725fc1f7e2c696?reconnect=true",
+    "host": "us-cdbr-iron-east-03.cleardb.net/heroku_9725fc1f7e2c696",
     "dialect": "mysql"
   }
 }
