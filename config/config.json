@@ -16,8 +16,8 @@
   "production": {
     "username": "bb06e617fbac03",
     "password": "26bf17c6",
-    "database": "game_of_drones_production",
-    "host": "us-cdbr-iron-east-03.cleardb.net/heroku_9725fc1f7e2c696",
+    "database": "heroku_9725fc1f7e2c696",
+    "host": "us-cdbr-iron-east-03.cleardb.net",
     "dialect": "mysql"
   }
 }
