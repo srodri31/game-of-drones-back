@@ -16,20 +16,27 @@ const create = (req, res) => {
         })
           .then(player => {
             if (player) {
-              PlayerGame.create({ playerId: player.id, gameId: game.id });
+              PlayerGame.create({ playerId: player.id, gameId: game.id })
+                .then(playerGame => {
+                  res.status(200).send(game);
+                })
+                .catch(error => res.status(400).send(error));
             } else {
               Player.create({
                 name: playerName
               })
                 .then(player =>
                   PlayerGame.create({ playerId: player.id, gameId: game.id })
+                    .then(playerGame => {
+                      res.status(200).send(game);
+                    })
+                    .catch(error => res.status(400).send(error))
                 )
                 .catch(error => res.status(400).send(error));
             }
           })
           .catch(error => res.status(400).send(error));
       });
-      res.status(200).send(game);
     })
     .catch(error => res.status(400).send(error));
 };

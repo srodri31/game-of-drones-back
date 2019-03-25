@@ -7,9 +7,15 @@ const calcRoundWinner = players => {
 
   if (player1.move === null || player2.move === null) return winner;
 
-  if (player1.move === SCISSORS && player2.move === ROCK) {
+  if (
+    player1.move.value === SCISSORS.value &&
+    player2.move.value === ROCK.value
+  ) {
     winner = player2;
-  } else if (player2.move === SCISSORS && player1.move === ROCK) {
+  } else if (
+    player2.move.value === SCISSORS.value &&
+    player1.move.value === ROCK.value
+  ) {
     winner = player1;
   } else if (player1.move.value > player2.move.value) {
     winner = player1;
@@ -36,6 +42,7 @@ const calcGameWinner = rounds => {
         winner = rounds[i].winner;
       }
     }
+    if (winsCount[winner] < 3) winner = null;
   }
   return winner;
 };
