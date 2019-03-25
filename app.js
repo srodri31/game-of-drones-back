@@ -3,6 +3,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 const morgan = require("morgan");
+const cors = require("cors");
 
 var players = require("./routes/players");
 let games = require("./routes/games");
@@ -12,6 +13,7 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(morgan("combined"));
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 

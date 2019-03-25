@@ -9,6 +9,7 @@ const create = (req, res) => {
   return Game.create({})
     .then(game => {
       const { players } = req.body;
+      console.log(players);
       players.map(playerName => {
         Player.findOne({
           where: { name: playerName }

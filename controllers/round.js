@@ -38,7 +38,11 @@ const findById = (req, res) => {
 const findByGame = (req, res) => {
   return Round.findAll({
     where: { gameId: req.params.gameId },
-    include: [{ model: Player }]
+    include: [{ model: Player }],
+    order: [
+      // Will escape title and validate DESC against a list of valid direction parameters
+      ["createdAt", "ASC"]
+    ]
   })
     .then(round => {
       if (round.length > 0) {
